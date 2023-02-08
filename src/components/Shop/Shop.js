@@ -18,14 +18,14 @@ const Shop = () => {
   const [size, setSize] = useState(10);
 
   useEffect(() => {
-    const url = `http://localhost:5000/products?page=${page}&size=${size}`;
+    const url = `https://ema-jhon-server-omega.vercel.app/products?page=${page}&size=${size}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setCount(data.count);
         setProducts(data.products);
       });
-  }, [page, size])
+  }, [page, size]);
 
   const pages = Math.ceil(count / size);
 
@@ -38,7 +38,7 @@ const Shop = () => {
     const storedCart = getStoredCart();
     const savedCart = [];
     const ids = Object.keys(storedCart);
-    fetch("http://localhost:5000/productsByIds", {
+    fetch("https://ema-jhon-server-omega.vercel.app/productsByIds", {
       method: "POST",
       headers: {
         "content-type": "application/json",
